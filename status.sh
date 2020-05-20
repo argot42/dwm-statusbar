@@ -6,7 +6,7 @@ pipe_path="/tmp/dwm_status.fifo"
 
 clock -f 'C%a %d %b %H:%M' -si 10 > $pipe_path &
 battery -f 'B%s %i' -si 60 > $pipe_path &
-writevol.sh
+writevol.sh &
 
 while read -r line; do
     case $line in
