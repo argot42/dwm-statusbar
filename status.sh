@@ -6,6 +6,7 @@ pipe_path="/tmp/dwm_status.fifo"
 
 clock -f 'C%a %d %b %H:%M' -si 10 > $pipe_path &
 battery -f 'B%s %i' -si 60 > $pipe_path &
+temp -f 'T%3.1f' -si 15 > $pipe_path &
 writevol.sh &
 
 while read -r line; do
@@ -33,7 +34,10 @@ while read -r line; do
         V*)
             vol="${line#?}" 
             ;;
+        T*)
+            temp="${line#?}"
+            ;;
     esac
 
-    /usr/bin/xsetroot -name " VOL $vol | BAT $bat | $clock"
+    /usr/bin/xsetroot -name " VOL $vol | BAT $bat | TEMP $temp | $clock"
 done < $pipe_path

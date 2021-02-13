@@ -1,4 +1,4 @@
 # dwm-statusbar
 async dwm statusbar
 
-clock and battery are from [sutils](https://github.com/baskerville/sutils/)
+temp, clock and battery are from [sutils](https://github.com/baskerville/sutils/)
