@@ -39,5 +39,5 @@ while read -r line; do
             ;;
     esac
 
-    /usr/bin/xsetroot -name " VOL $vol | BAT $bat | TEMP $temp | $clock"
+    xsetroot -name " VOL $vol | BAT $bat | TEMP $temp | $clock"
 done < $pipe_path
