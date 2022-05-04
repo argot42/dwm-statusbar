@@ -8,7 +8,7 @@
 #include <sys/sensors.h>
 
 #define INTERVAL 0
-#define FMT_SIZE 100
+#define FMT_SIZE 10
 #define MIB_SIZE 5
 
 void put(char *fmt)
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 {
 	int opt;
 	int itv = INTERVAL;
-	char fmt[FMT_SIZE] = "%3.1f %d\n";
+	char fmt[FMT_SIZE] = "%d %3.1f\n";
 
 	while((opt = getopt(argc, argv, "hf:i:")) != -1) {
 		switch(opt) {
