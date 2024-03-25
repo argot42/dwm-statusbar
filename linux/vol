@@ -1,7 +1,13 @@
 #!/bin/sh
 
+getvol() {
+    amixer -M get Master |
+        awk -v fmt=$1 '/Mono:/ { gsub(/[\[\]]/, "", $0); print fmt $4 }'
+}
+
+getvol $1
+
 stdbuf -oL amixer events | grep --line-buffered 'event value: numid=10' |
     while IFS= read -r line; do
-        amixer -M get Master |
-            awk -v fmt=$1 '/Mono:/ { gsub(/[\[\]]/, "", $0); print fmt $4 }'
+        getvol $1
     done
